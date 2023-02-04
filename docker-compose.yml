@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  db:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=${DB_NAME}
+      - MYSQL_RANDOM_ROOT_PASSWORD=True
+    ports:
+      - '${DB_PORT}:3306'
+    volumes:
+      - "./db:/docker-entrypoint-initdb.d"

@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <!-- Header-->
+    <header class="bg-img py-5" style="background-image: url('/img/ocean.jpg')">
+        <div class="container px-5">
+            {% include 'includes/flash.html' %}
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder text-white mb-2">About Us</h1>
+                        <p class="lead text-white mb-4">A brief introduction to who we are</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <!-- Features section-->
+    <section class="py-5 text-center" id="features">
+        <div class="container px-5 my-5">
+            <div class="row gx-5">
+                <div class="col-lg-12 mb-3 card">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <img src="/img/john.jpg" width="111" height="111" alt="John Hook">
+                        <div class="ps-3 w-100">
+                            <h2 class="h4 fw-bolder">Our Founder</h2>
+                            <p>
+                                John Hook founded The Geordie Boat Club in March 2022.
+                                John has been a captain of many cruise ships and yachts, with over 30 years experience.
+                                He has keen interest in boats and has collected many personal boats over the years.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-3 card">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <img src="/img/boats_small.jpg" width="111" height="111" alt="John Donaldson">
+                        <div class="ps-3 w-100">
+                            <h2 class="h4 fw-bolder">Our Boats</h2>
+                            <p>
+                                We have an extensive collection of boats of many shapes and sizes.
+                                Our collection features the fastest UK speed boats and a very large yacht.
+                                One of the unique boats in our collection is a square spruce boat, which was donated by our VIP members Steve and Alex.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-12 mb-3 card">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <img src="/img/event.jpg" width="111" height="111" alt="Events">
+                        <div class="ps-3 w-100">
+                            <h2 class="h4 fw-bolder">Our Events</h2>
+                            <p>
+                                We regularly host public and private events that have been featured in the British Boat Magazine.
+                                Our events showcase our collection of boats, and they are special occasions that are not to be missed!
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

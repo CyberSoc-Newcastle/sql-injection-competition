@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <!-- Header-->
+    <header class="bg-img py-5" style="background-image: url('/img/events.jpg')">
+        <div class="container px-5">
+            {% include 'includes/flash.html' %}
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder text-white mb-2">Public Events</h1>
+                        <p class="lead text-white mb-4">View our recent events that were open to the public</p>
+                        <form class="d-flex gap-3 d-sm-flex justify-content-sm-center">
+                            <input type="text" class="form-control w-100" id="query" name="query" placeholder="Search for an event...">
+                            <button type="submit" class="btn btn-success btn-lg px-4"><i class="bi bi-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <!-- Features section-->
+    <section class="py-5 text-center" id="features">
+        <div class="container px-5 my-5">
+            <div class="row row-cols-1 row-cols-lg-3 g-5">
+                <div class="col mb-5 mb-lg-0">
+                    <div class="h-100">
+                        <div class="lg-icon bg-warning bg-gradient text-white rounded-3 mb-3"><i class="bi bi-calendar-event"></i></div>
+                        <h2 class="h4 fw-bolder">Event 1</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                    </div>
+                </div>
+                <div class="col mb-5 mb-lg-0">
+                    <div class="h-100">
+                        <div class="lg-icon bg-warning bg-gradient text-white rounded-3 mb-3"><i class="bi bi-calendar-event"></i></div>
+                        <h2 class="h4 fw-bolder">Event 2</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                    </div>
+                </div>
+                <div class="col mb-5 mb-lg-0">
+                    <div class="h-100">
+                        <div class="lg-icon bg-warning bg-gradient text-white rounded-3 mb-3"><i class="bi bi-calendar-event"></i></div>
+                        <h2 class="h4 fw-bolder">Event 3</h2>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore eiusmod tempor incididunt ut labore et</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

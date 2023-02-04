@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <!-- Header-->
+    <header class="bg-img-center py-5" style="background-image: url('/img/port.jpg')">
+        <div class="container px-5">
+            {% include 'includes/flash.html' %}
+            <div class="row gx-5 justify-content-center">
+                <div class="col-lg-6">
+                    <div class="text-center my-5">
+                        <h1 class="display-5 fw-bolder text-white mb-2">Our Boats</h1>
+                        <p class="lead text-white mb-4">Some of our current and most popular boats in our collection</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <!-- Features section-->
+    <section class="py-5 text-center" id="features">
+        <div class="container px-5 my-5">
+            <div class="row row-cols-2 row-cols-lg-3 g-5">
+                <div class="col">
+                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
+                    <h2 class="h4 fw-bolder">Ship 1</h2>
+                </div>
+                <div class="col">
+                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
+                    <h2 class="h4 fw-bolder">Ship 2</h2>
+                </div>
+                <div class="col">
+                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
+                    <h2 class="h4 fw-bolder">Ship 3</h2>
+                </div>
+                <div class="col">
+                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
+                    <h2 class="h4 fw-bolder">Ship 4</h2>
+                </div>
+                <div class="col">
+                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
+                    <h2 class="h4 fw-bolder">Ship 5</h2>
+                </div>
+                <div class="col">
+                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
+                    <h2 class="h4 fw-bolder">Ship 6</h2>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
