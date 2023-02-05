@@ -6,6 +6,7 @@ from sqlalchemy import text
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+from sqlalchemy.exc import ProgrammingError
 
 # Environment variables
 load_dotenv()
@@ -181,6 +182,13 @@ def secure_access():
                                    "of this page")
 
     return render_template("admin/secure.html", msg="The treasure is buried next to the statue of John Hook")
+
+
+# Error handler for SQL
+@app.errorhandler(ProgrammingError)
+def error_sql(error):
+    error_msg = str(error)
+    return render_template("error.html", msg=error_msg.split("\n")), 500
 
 
 if __name__ == '__main__':
