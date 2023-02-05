@@ -25,8 +25,18 @@
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <h2 class="h3 fw-bolder mb-4">Enter your details</h2>
                     <form method="POST">
-                        <input type="text" class="form-control w-100 mb-3" id="username" name="username" placeholder="Username">
-                        <input type="password" class="form-control w-100 mb-3" id="password" name="password" placeholder="Password">
+                        <div class="input-group w-100 mb-3">
+                            <span class="input-group-text">
+                                <i class="bi bi-person"></i>
+                            </span>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                        </div>
+                        <div class="input-group w-100 mb-3">
+                            <span class="input-group-text">
+                                <i class="bi bi-key"></i>
+                            </span>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                        </div>
                         <button type="submit" class="form-control btn btn-primary mb-3">Submit</button>
                     </form>
                     <p>Not a VIP Member?
