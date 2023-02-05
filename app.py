@@ -110,7 +110,31 @@ def logout():
 @app.route('/members')
 @login_required
 def members():
-    return render_template("members.html")
+    return render_template("members/actions.html")
+
+
+@app.route('/members/rent')
+@login_required
+def rent_boat():
+    return render_template("members/rent_boat.html")
+
+
+@app.route('/members/search')
+@login_required
+def members_search():
+    return render_template("members/search.html")
+
+
+@app.route('/members/motto')
+@login_required
+def member_motto():
+    return render_template("members/motto.html", motto="Carp is love, carp is life!")
+
+
+@app.route('/admin')
+@login_required
+def admin():
+    return render_template("base.html")
 
 
 if __name__ == '__main__':

@@ -4,3 +4,14 @@
            href="{{ url_for(endpoint) }}">{{name}}</a>
     </li>
 {% endmacro %}
+
+{% macro member_action(icon, endpoint, name) %}
+    <div class="col">
+        <div class="h-100">
+            <a href="{{ url_for(endpoint) }}" class="text-decoration-none" style="display: block">
+                <div class="lg-icon bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-{{ icon }}"></i></div>
+                <h2 class="h4 fw-bolder">{{ name }}</h2>
+            </a>
+        </div>
+    </div>
+{% endmacro %}

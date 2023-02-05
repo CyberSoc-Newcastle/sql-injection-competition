@@ -1,0 +1,21 @@
+{% extends 'members/base_action.html' %}
+
+{% block header_content %}
+    <div class="text-center my-5">
+        <h1 class="display-5 fw-bolder text-white mb-2">Search Members</h1>
+        <p class="lead text-white mb-4">Find a member in our VIP Club</p>
+        <form class="d-flex gap-3 d-sm-flex justify-content-sm-center">
+            <input type="text" class="form-control w-100" id="query" name="query" placeholder="Search for a member...">
+            <button type="submit" class="btn btn-success btn-lg px-4"><i class="bi bi-search"></i></button>
+        </form>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <!-- Features section-->
+    <section class="py-5 text-center" id="features">
+        <div class="container px-5">
+            <h2 class="h3 fw-bolder mb-5">Content</h2>
+        </div>
+    </section>
+{% endblock %}

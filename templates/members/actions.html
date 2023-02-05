@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% from "includes/macro.html" import member_action with context %}
 
 {% block header %}
     <!-- Header-->
@@ -20,11 +21,12 @@
 {% block content %}
     <!-- Features section-->
     <section class="py-5 text-center" id="features">
-        <div class="container px-5 my-5">
-            <div class="row gx-5 justify-content-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h2 class="h3 fw-bolder mb-4">Member Actions</h2>
-                </div>
+        <div class="container px-5">
+            <div class="row row-cols-2 row-cols-lg-4 g-5 align-content-center">
+                {{ member_action('shield-lock-fill', 'admin', 'Admin Area') }}
+                {{ member_action('people-fill', 'members_search', 'Search Members') }}
+                {{ member_action('piggy-bank', 'rent_boat', 'Rent a Boat') }}
+                {{ member_action('chat-left-dots', 'member_motto', 'Member Motto') }}
             </div>
         </div>
     </section>
