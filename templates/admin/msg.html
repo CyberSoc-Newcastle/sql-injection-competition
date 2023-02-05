@@ -11,10 +11,17 @@
                     <div class="text-center my-5">
                         <h1 class="display-5 fw-bolder mb-2">{{ title }}</h1>
                         <p class="lead mb-4">{{ msg }}</p>
-                        <a class="btn btn-secondary" href="{{ url_for('members') }}">
-                            <i class="bi bi-arrow-left"></i>
-                            Members Area
-                        </a>
+                        {% if current_user.role == "admin" %}
+                            <a class="btn btn-secondary" href="{{ url_for('admin') }}">
+                                <i class="bi bi-arrow-left"></i>
+                                Admin Area
+                            </a>
+                        {% else %}
+                            <a class="btn btn-secondary" href="{{ url_for('members') }}">
+                                <i class="bi bi-arrow-left"></i>
+                                Members Area
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
