@@ -66,8 +66,8 @@ def events():
         query_text = f'Showing {len(results)} result(s) for "{query}"'
     else:
         results = db.session.execute(text(f"SELECT title, description FROM events WHERE "
-                                          f"public=1 ORDER BY rating LIMIT 6")).fetchall()
-        query_text = f'Showing top events'
+                                          f"public=1 ORDER BY rating DESC LIMIT 6")).fetchall()
+        query_text = f'Showing most popular events'
 
     return render_template("events.html", query=query_text, events=results)
 
