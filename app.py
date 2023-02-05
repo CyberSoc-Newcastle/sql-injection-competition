@@ -50,7 +50,18 @@ def about():
 
 @app.route('/events')
 def events():
-    return render_template("events.html")
+    args = request.args
+    query = args.get('query')
+    if query:
+        results = db.session.execute(text(f"SELECT title, description FROM events WHERE "
+                                         f"LOWER(title) LIKE '%{query.lower()}%' AND public=1")).fetchall()
+        query_text = f'Showing {len(results)} result(s) for "{query}"'
+    else:
+        results = db.session.execute(text(f"SELECT title, description FROM events WHERE "
+                                          f"public=1 ORDER BY rating LIMIT 6")).fetchall()
+        query_text = f'Showing top events'
+
+    return render_template("events.html", query=query_text, events=results)
 
 
 @app.route('/boats')
