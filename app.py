@@ -177,7 +177,8 @@ def secure_access():
 
     if request.headers.get('User-Agent') != 'Top Secret Boat Club Browser':
         return render_template("admin/msg.html", title="Unauthorised",
-                               msg="You need to be using 'Top Secret Boat Club Browser'")
+                               msg="You need to be using 'Top Secret Boat Club Browser' to see the content "
+                                   "of this page")
 
     return render_template("admin/secure.html", msg="The treasure is buried next to the statue of John Hook")
 
