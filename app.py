@@ -154,7 +154,7 @@ def member_motto():
 def admin():
     if current_user.role != "admin":
         return render_template("admin/msg.html", title="Unauthorised",
-                               msg="You need to have the role 'admin' to see the content of this page")
+                               msg="You need to have the role 'admin' to see the content of this page"), 401
 
     return render_template("admin/actions.html")
 
@@ -164,7 +164,7 @@ def admin():
 def admin_motto():
     if current_user.role != "admin":
         return render_template("admin/msg.html", title="Unauthorised",
-                               msg="You need to have the role 'admin' to see the content of this page")
+                               msg="You need to have the role 'admin' to see the content of this page"), 401
 
     return render_template("admin/motto.html", motto="The admins rule the seas!")
 
@@ -174,12 +174,12 @@ def admin_motto():
 def secure_access():
     if current_user.role != "admin":
         return render_template("admin/msg.html", title="Unauthorised",
-                               msg="You need to have the role 'admin' to see the content of this page")
+                               msg="You need to have the role 'admin' to see the content of this page"), 401
 
     if request.headers.get('User-Agent') != 'Top Secret Boat Club Browser':
         return render_template("admin/msg.html", title="Unauthorised",
                                msg="You need to be using 'Top Secret Boat Club Browser' to see the content "
-                                   "of this page")
+                                   "of this page"), 401
 
     return render_template("admin/secure.html", msg="The treasure is buried next to the statue of John Hook")
 
