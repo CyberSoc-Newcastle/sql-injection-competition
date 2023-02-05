@@ -24,4 +24,22 @@ VALUES
     ('Cook with Martin', 'Martin James gave cooking lessons onboard our yacht.', 95, 0),
     ('Carp Fishing with Thomas Gerard', 'Thomas Gerard came all the way from Australia to teach our VIP members the best tips for carp fishing.', 110, 0);
 
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(32) NOT NULL UNIQUE,
+    fullname VARCHAR(64) NOT NULL,
+    role VARCHAR(32) NOT NULL,
+    password VARCHAR(32) NOT NULL
+);
+
+INSERT INTO users (username, fullname, role, password)
+VALUES
+    ('steve', 'Steve Business', 'member', MD5('pizza')),
+    ('alex', 'Alex Smith', 'member', MD5('chocolate')),
+    ('morgan', 'Morgan Robson', 'member', MD5('beans')),
+    ('bob', 'Bob Wilson', 'member', MD5('sausage')),
+    ('laura', 'Laura Wilson', 'member', MD5('chips')),
+    ('donald', 'Donald Johnson', 'member', MD5('tomato'));
+
 

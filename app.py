@@ -31,9 +31,14 @@ class User(flask_login.UserMixin):
 
 
 @login_manager.user_loader
-def user_loader(username):
+def user_loader(user_id):
+    args = user_id.split(",", 1)
+    if len(args) != 2:
+        return None
     user = User()
-    user.id = username
+    user.id = user_id
+    user.username = args[0]
+    user.role = args[1]
     return user
 
 
@@ -74,6 +79,24 @@ def login():
     if current_user.is_authenticated:
         return redirect(url_for('members'))
 
+    if request.method == "GET":
+        return render_template("login.html")
+
+    username = request.form.get('username', '')
+    password = request.form.get('password', '')
+    result = db.session.execute(text(f"SELECT username, role from users "
+                                     f"WHERE username='{username}' AND password=MD5('{password}')")).first()
+
+    if result:
+        user = User()
+        user.id = f"{result.username},{result.role}"
+        user.username = result.username
+        user.role = result.role
+        flask_login.login_user(user)
+        flash(f"Successfully logged in as {user.username}", "success")
+        return redirect(url_for('members'))
+
+    flash("Incorrect username/password", "danger")
     return render_template("login.html")
 
 
@@ -87,7 +110,7 @@ def logout():
 @app.route('/members')
 @login_required
 def members():
-    return render_template("base.html")
+    return render_template("members.html")
 
 
 if __name__ == '__main__':
