@@ -122,7 +122,16 @@ def rent_boat():
 @app.route('/members/search')
 @login_required
 def members_search():
-    return render_template("members/search.html")
+    args = request.args
+    query = args.get('query')
+    results = []
+    query_text = "Enter a name to search"
+    if query:
+        results = db.session.execute(text(f"SELECT fullname FROM users WHERE "
+                                         f"LOWER(fullname) LIKE '%{query.lower()}%'")).fetchall()
+        query_text = f'Showing {len(results)} result(s) for "{query}"'
+
+    return render_template("members/search.html", query=query_text, results=results)
 
 
 @app.route('/members/motto')

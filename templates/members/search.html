@@ -15,7 +15,18 @@
     <!-- Features section-->
     <section class="py-5 text-center" id="features">
         <div class="container px-5">
-            <h2 class="h3 fw-bolder mb-5">Content</h2>
+            <h2 class="h3 fw-bolder mb-5">
+                {{ query }}
+            </h2>
+            {% for result in results %}
+                <div class="col-lg-12 mb-3 card">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <div class="ps-3 w-100">
+                            <h2 class="h4 fw-bolder p-0 m-0">{{ result.fullname }}</h2>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </section>
 {% endblock %}
