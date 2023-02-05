@@ -1,0 +1,17 @@
+{% extends 'admin/base_action.html' %}
+
+{% block header_content %}
+    <div class="text-center my-5">
+        <h1 class="display-5 fw-bolder text-white mb-2">Secure Access</h1>
+        <p class="lead text-white mb-4">"You made it!"</p>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <!-- Features section-->
+    <section class="py-5" id="features">
+        <div class="container px-5 text-center">
+            <h2 class="h3 fw-bolder mb-2">Top secret - {{ msg }}</h2>
+        </div>
+    </section>
+{% endblock %}

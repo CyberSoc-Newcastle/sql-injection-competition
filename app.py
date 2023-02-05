@@ -62,7 +62,7 @@ def events():
     query = args.get('query')
     if query:
         results = db.session.execute(text(f"SELECT title, description FROM events WHERE "
-                                         f"LOWER(title) LIKE '%{query.lower()}%' AND public=1")).fetchall()
+                                          f"LOWER(title) LIKE '%{query.lower()}%' AND public=1")).fetchall()
         query_text = f'Showing {len(results)} result(s) for "{query}"'
     else:
         results = db.session.execute(text(f"SELECT title, description FROM events WHERE "
@@ -136,7 +136,7 @@ def members_search():
     query_text = "Enter a name to search"
     if query:
         results = db.session.execute(text(f"SELECT fullname FROM users WHERE "
-                                         f"LOWER(fullname) LIKE '%{query.lower()}%'")).fetchall()
+                                          f"LOWER(fullname) LIKE '%{query.lower()}%'")).fetchall()
         query_text = f'Showing {len(results)} result(s) for "{query}"'
 
     return render_template("members/search.html", query=query_text, results=results)
@@ -151,7 +151,35 @@ def member_motto():
 @app.route('/admin')
 @login_required
 def admin():
-    return render_template("base.html")
+    if current_user.role != "admin":
+        return render_template("admin/msg.html", title="Unauthorised",
+                               msg="You need to have the role 'admin' to see the content of this page")
+
+    return render_template("admin/actions.html")
+
+
+@app.route('/admin/motto')
+@login_required
+def admin_motto():
+    if current_user.role != "admin":
+        return render_template("admin/msg.html", title="Unauthorised",
+                               msg="You need to have the role 'admin' to see the content of this page")
+
+    return render_template("admin/motto.html", motto="The admins rule the seas!")
+
+
+@app.route('/admin/secure')
+@login_required
+def secure_access():
+    if current_user.role != "admin":
+        return render_template("admin/msg.html", title="Unauthorised",
+                               msg="You need to have the role 'admin' to see the content of this page")
+
+    if request.headers.get('User-Agent') != 'Top Secret Boat Club Browser':
+        return render_template("admin/msg.html", title="Unauthorised",
+                               msg="You need to be using 'Top Secret Boat Club Browser'")
+
+    return render_template("admin/secure.html", msg="The treasure is buried next to the statue of John Hook")
 
 
 if __name__ == '__main__':

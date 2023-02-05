@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <!-- Header-->
+    <header class="bg-img-center py-5" style="background-image: url('/img/boat_distance.jpg')">
+        <div class="container px-5">
+            {% include 'includes/flash.html' %}
+            <div class="row mb-2">
+                <div class="col-lg-3 d-flex">
+                    <a class="btn btn-secondary w-100" href="{{ url_for('admin') }}">
+                        <i class="bi bi-arrow-left"></i>
+                        Admin Area
+                    </a>
+                </div>
+            </div>
+            <div class="row pb-5 justify-content-center">
+                <div class="col-lg-6">
+                    {% block header_content %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </header>
+{% endblock %}
