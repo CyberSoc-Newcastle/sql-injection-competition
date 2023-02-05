@@ -19,6 +19,9 @@ app.secret_key = os.getenv('SECRET_KEY')
 db = SQLAlchemy()
 app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://readonly:readonly@" \
                                         f"localhost:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+app.config["SQLALCHEMY_BINDS"] = {
+    "3rd_company": f"mysql://readonly:readonly@localhost:3606/geordie_boat_rentals_ltd"
+}
 db.init_app(app)
 
 # Login manager
@@ -116,7 +119,12 @@ def members():
 @app.route('/members/rent')
 @login_required
 def rent_boat():
-    return render_template("members/rent_boat.html")
+    args = request.args
+    category = args.get('category', 'Jet Ski')
+    results = db.session.execute(text(f"SELECT name, price FROM boats WHERE category='{category}'"),
+                                 bind_arguments={'bind': db.engines.get('3rd_company')}).fetchall()
+
+    return render_template("members/rent_boat.html", category=category, results=results)
 
 
 @app.route('/members/search')

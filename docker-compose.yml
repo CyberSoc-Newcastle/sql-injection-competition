@@ -10,3 +10,14 @@ services:
       - '${DB_PORT}:3306'
     volumes:
       - "./db:/docker-entrypoint-initdb.d"
+
+  db2:
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_DATABASE=geordie_boat_rentals_ltd
+      - MYSQL_RANDOM_ROOT_PASSWORD=True
+    ports:
+      - '3606:3306'
+    volumes:
+      - "./db2:/docker-entrypoint-initdb.d"

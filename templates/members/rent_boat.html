@@ -5,7 +5,11 @@
         <h1 class="display-5 fw-bolder text-white mb-2">Rent a Boat</h1>
         <p class="lead text-white mb-4">Rent a boat, only for our VIP Members</p>
         <form class="d-flex gap-3 d-sm-flex justify-content-sm-center">
-            <input type="text" class="form-control w-100" id="query" name="query" placeholder="Search for a boat...">
+            <select class="form-select" aria-label="category" name="category" id="category">
+              <option value="Jet Ski" {% if category == "Jet Ski"%}selected{% endif %}>Jet Ski</option>
+              <option value="Speed Boat" {% if category == "Speed Boat"%}selected{% endif %}>Speed Boat</option>
+              <option value="Yacht" {% if category == "Yacht"%}selected{% endif %}>Yacht</option>
+            </select>
             <button type="submit" class="btn btn-success btn-lg px-4"><i class="bi bi-search"></i></button>
         </form>
     </div>
@@ -13,9 +17,42 @@
 
 {% block content %}
     <!-- Features section-->
-    <section class="py-5 text-center" id="features">
+    <section class="py-5" id="features">
         <div class="container px-5">
-            <h2 class="h3 fw-bolder mb-5">Content</h2>
+            <h2 class="h3 fw-bolder mb-5 text-center">Showing {{ results|length }} result(s) for '{{ category }}'</h2>
+            {% for result in results %}
+                <div class="col-lg-12 mb-3 card">
+                    <div class="card-body d-flex flex-row align-items-center">
+                        <div class="ps-3">
+                            <h2 class="h4 fw-bolder">{{ result.name }}</h2>
+                            <p class="mb-0">Rental Price: £{{ result.price }}</p>
+                        </div>
+                        <button class="h-100 ms-auto btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#rentBoat">
+                            Rent
+                        </button>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </section>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="rentBoat" tabindex="-1" aria-labelledby="rentBoat" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="rentBoat">Rent Boat</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              Unfortunately, the payment system is down. <br>
+              We are working with our partner rental company to fix the issue.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
 {% endblock %}
