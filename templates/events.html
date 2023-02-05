@@ -26,9 +26,9 @@
     <section class="py-5 text-center" id="features">
         <div class="container px-5">
             <h2 class="h3 fw-bolder mb-5">{{ query }}</h2>
-            <div class="row row-cols-1 row-cols-lg-3 g-5">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-5">
                 {% for event in events %}
-                <div class="col mb-5 mb-lg-0">
+                <div class="col">
                     <div class="h-100">
                         <div class="lg-icon bg-warning bg-gradient text-white rounded-3 mb-3"><i class="bi bi-calendar-event"></i></div>
                         <h2 class="h4 fw-bolder">{{ event.title }}</h2>
