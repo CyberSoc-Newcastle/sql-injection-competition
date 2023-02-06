@@ -6,7 +6,7 @@ from sqlalchemy import text
 from pathlib import Path
 import os
 from dotenv import load_dotenv
-from sqlalchemy.exc import ProgrammingError
+from sqlalchemy.exc import ProgrammingError, OperationalError
 from random import shuffle
 
 # Environment variables
@@ -188,6 +188,7 @@ def secure_access():
 
 # Error handler for SQL
 @app.errorhandler(ProgrammingError)
+@app.errorhandler(OperationalError)
 def error_sql(error):
     error_msg = str(error)
     return render_template("error.html", msg=error_msg.split("\n")), 500
