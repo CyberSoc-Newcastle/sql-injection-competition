@@ -7,6 +7,7 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from sqlalchemy.exc import ProgrammingError
+from random import shuffle
 
 # Environment variables
 load_dotenv()
@@ -75,7 +76,9 @@ def events():
 
 @app.route('/boats')
 def boats():
-    return render_template("boats.html")
+    results = db.session.execute(text(f"SELECT name, img FROM boats WHERE secret=0")).fetchall()
+    shuffle(results)
+    return render_template("boats.html", boats=results[:6])
 
 
 @app.route('/login', methods=['GET', 'POST'])

@@ -43,3 +43,33 @@ VALUES
     ('donald', 'Donald Johnson', 'member', MD5('tomato'));
 
 
+DROP TABLE IF EXISTS boats;
+CREATE TABLE boats (
+    id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(64) NOT NULL,
+    img VARCHAR(128),
+    secret INTEGER NOT NULL
+);
+
+INSERT INTO boats (name, img, secret)
+VALUES
+    ('Pirate Ship', 'big_ship.jpg', 0),
+    ('Sailing Ship', 'sail_ship.jpg', 0),
+    ('Destroyer Yacht', NULL, 1),
+    ('Destroyer', 'destroyer.jpg', 0),
+    ('Raft', 'raft.jpg', 0),
+    ('Super Raft', NULL, 1),
+    ('Outdoor Motor Boat', 'outdoor_motor.jpg', 0),
+    ('Speed Yacht', 'speed_yacht.jpg', 0),
+    ('Super Yacht', NULL, 1),
+    ('Huge Boat 7000', NULL, 1),
+    ('Jet Ski 5000', NULL, 1),
+    ('Big Dinghy', NULL, 1),
+    ('Small Dinghy', NULL, 1),
+    ('Tiny Dinghy', NULL, 1),
+    ('Medium Dinghy', NULL, 1),
+    ('Blowup Dinghy', NULL, 1),
+    ('Quick Dinghy', NULL, 1),
+    ('Speed Boat Dinghy', NULL, 1),
+    ('Wood Boat', 'wood_boat.jpg', 0);
+

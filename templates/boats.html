@@ -22,30 +22,12 @@
     <section class="py-5 text-center" id="features">
         <div class="container px-5 my-5">
             <div class="row row-cols-2 row-cols-lg-3 g-5">
+                {% for boat in boats %}
                 <div class="col">
-                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
-                    <h2 class="h4 fw-bolder">Ship 1</h2>
+                    <img class="mb-2" src="/img/boats/{{ boat.img }}" width="111" height="111">
+                    <h2 class="h4 fw-bolder">{{ boat.name }}</h2>
                 </div>
-                <div class="col">
-                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
-                    <h2 class="h4 fw-bolder">Ship 2</h2>
-                </div>
-                <div class="col">
-                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
-                    <h2 class="h4 fw-bolder">Ship 3</h2>
-                </div>
-                <div class="col">
-                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
-                    <h2 class="h4 fw-bolder">Ship 4</h2>
-                </div>
-                <div class="col">
-                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
-                    <h2 class="h4 fw-bolder">Ship 5</h2>
-                </div>
-                <div class="col">
-                    <img class="mb-2" src="/img/boats/sail_ship.jpg" width="111" height="111">
-                    <h2 class="h4 fw-bolder">Ship 6</h2>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>
