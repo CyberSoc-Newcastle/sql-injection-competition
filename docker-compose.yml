@@ -1,23 +1,11 @@
-version: '3.8'
+version: '3'
 services:
   db:
     image: mysql:latest
     restart: always
     environment:
-      - MYSQL_DATABASE=boat_club
       - MYSQL_RANDOM_ROOT_PASSWORD=True
     ports:
-      - '${DB_PORT_1}:3306'
+      - '${DB_PORT}:3306'
     volumes:
-      - "./db:/docker-entrypoint-initdb.d"
-
-  db2:
-    image: mysql:latest
-    restart: always
-    environment:
-      - MYSQL_DATABASE=geordie_boat_rentals_ltd
-      - MYSQL_RANDOM_ROOT_PASSWORD=True
-    ports:
-      - '${DB_PORT_2}:3306'
-    volumes:
-      - "./db2:/docker-entrypoint-initdb.d"
+      - "./db_docker:/docker-entrypoint-initdb.d"

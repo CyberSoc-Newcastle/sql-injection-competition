@@ -19,10 +19,9 @@ app.secret_key = os.getenv('SECRET_KEY')
 
 # Database
 db = SQLAlchemy()
-app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://readonly:readonly@" \
-                                        f"localhost:{os.getenv('DB_PORT_1')}/boat_club"
+app.config["SQLALCHEMY_DATABASE_URI"] = f"mysql://readonly:readonly@localhost:{os.getenv('DB_PORT')}/boat_club"
 app.config["SQLALCHEMY_BINDS"] = {
-    "3rd_company": f"mysql://readonly:readonly@localhost:{os.getenv('DB_PORT_2')}/geordie_boat_rentals_ltd"
+    "3rd_company": f"mysql://readonly2:readonly2@localhost:{os.getenv('DB_PORT')}/geordie_boat_rentals_ltd"
 }
 db.init_app(app)
 
