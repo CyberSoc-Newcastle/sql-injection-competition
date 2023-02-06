@@ -8,7 +8,14 @@ The application is based on a fictional boat club. It shows information about th
 ### Requirements
 To run this application you will need:
 - Python 3.7+
+
+If you are using Docker to run the MySQL database, you will need:
 - Docker
+- Docker-compose
+
+If you are running the database bare metal, you will need to install:
+- mysql-server
+
 ### Installation
 To install the required Python libraries, run the command:
 ```
@@ -22,29 +29,19 @@ Create a file with the filename `.env` with the following contents:
 SECRET_KEY="<VERY_LONG_SECURE_KEY>"
 
 # Database
-DB_PORT_1=3506
-DB_PORT_2=3606
+DB_PORT_=3306
 ```
 
 If you wish to run the Flask application in debug mode, add `debug=True` to the `.env` file.
 
-### Running the application
-Firstly, start the MySQL databases by running the command:
+### Running the database
+#### Using Docker
+To start the MySQL database, using Docker, run the command:
 ```
-docker-compose up
-```
-
-Next, start the Flask application by running the command:
-```
-python app.py
+docker-compose up -d
 ```
 
-Finally, in your web browser, navigate to `http://127.0.0.1:5000` to view the website.
-
-### Closing the application
-To close the Flask application, press Ctrl+C in the command line to terminate the program.
-
-To close the MySQL databases, run the command:
+To close the MySQL database, run the command:
 ```
 docker-compose stop
 ```
@@ -53,6 +50,22 @@ If you wish to delete the database, run the command:
 ```
 docker-compose down -v
 ```
+#### Using a bare metal MySQL server
+Login to the MySQL as the root user, then run the command:
+```
+source </path/to>/db_bare_metal/setup.sql
+```
+This will create the required users, databases, tables and insert the default data.
+
+### Running the Flask application
+To run the Flask application, run the command:
+```
+python app.py
+```
+
+In your web browser, navigate to `http://127.0.0.1:5000` to view the website.
+
+To close the Flask application, press Ctrl+C in the command line to terminate the program.
 
 ## Credits
 - Bootstrap template used: [Business Frontpage - Start Bootstrap](https://startbootstrap.com/template/business-frontpage)
