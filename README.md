@@ -31,7 +31,7 @@ Create a file with the filename `.env` with the following contents:
 SECRET_KEY="<VERY_LONG_SECURE_KEY>"
 
 # Database
-DB_PORT_=3306
+DB_PORT=3306
 ```
 
 If you wish to run the Flask application in debug mode, add `debug=True` to the `.env` file.
