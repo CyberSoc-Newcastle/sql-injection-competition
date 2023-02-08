@@ -142,6 +142,7 @@ __Question:__ There is a different database, used somewhere in the member's area
 __Answer:__ geordie_boat_rentals_ltd
 
 __Solution:__
+
 There are two pages in the member area that were vulnerable to SQL injection. These were 'Search Members' and 'Rent a Boat'.
 
 The 'Search Members' page used the same database that was contained the `events` and `users` tables in the previous questions.
