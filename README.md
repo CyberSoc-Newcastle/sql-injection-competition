@@ -4,7 +4,7 @@ This is a Flask web application that is vulnerable to SQL injection. The goal of
 
 The application is based on a fictional boat club called 'The Geordie Boat Club'. It shows information about the club such as events and their collection of boats. Pre-existing members are able to login and access member-only permissions such as search members, rent a boat and view the member motto. This application also contains an admin area which allows admins to view the admin motto and view a secure access page only available to admins.
 
-This application was used as part of a [CyberSoc](https://cybersoc.org.uk/) workshop and competition to practice SQL injection and use SQLMap.
+This application was used as part of a [CyberSoc](https://cybersoc.org.uk/) workshop and competition to practice SQL injection and use SQLMap. You can find the questions asked [here](competition/questions.md) and the solutions [here](competition/solutions.md).
 
 ## How to Run
 ### Requirements
