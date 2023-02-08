@@ -3,14 +3,14 @@
 This page contains the solutions for the competition. A text solution is provided for each question.
 
 ## Contents
-- Question 1
-- Question 2
-- Question 3
-- Question 4
-- Question 5
-- Question 6
-- Question 7
-- Question 8
+- [Question 1](#question-1)
+- [Question 2](#question-2)
+- [Question 3](#question-3)
+- [Question 4](#question-4)
+- [Question 5](#question-5)
+- [Question 6](#question-6)
+- [Question 7](#question-7)
+- [Question 8](#question-8)
 
 ## Question 1
 __Question:__ The events page is only supposed to show public events. How many events are there in total (including privates ones)?
@@ -75,7 +75,7 @@ __Question:__ How many users are there in the database?
 __Answer:__ 6
 
 __Solution:__ 
-Staying on the events that was used to find the answer in question 1, we could use the output from the command that showed the tables in the `boat_club` database. The table that we are interested is `users`. You could run the command `https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T users --dump`. This tables contains password and if you follow the prompts by SQLMap for a dictionary based attack, you could also see the raw passwords that would be helpful for question 3. The output would be:
+Staying on the events that was used to find the answer in [question 1](#question-1), we could use the output from the command that showed the tables in the `boat_club` database. The table that we are interested is `users`. You could run the command `https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T users --dump`. This tables contains password and if you follow the prompts by SQLMap for a dictionary based attack, you could also see the raw passwords that would be helpful for [question 3](#question-3). The output would be:
 ```
 Database: boat_club
 Table: users
@@ -97,7 +97,7 @@ If you look at the output from the dump command, you could see that there were _
 ## Question 3
 __Question:__ What is Alex's password?
 
-If you ran the command `https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T users --dump` from question 2, and used SQLMap to perform a dictionary based attack, you could see the raw passwords. This command produced the output:
+If you ran the command `https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T users --dump` from [question 2](#question-2), and used SQLMap to perform a dictionary based attack, you could see the raw passwords. This command produced the output:
 ```
 Database: boat_club
 Table: users
@@ -171,7 +171,7 @@ __Answer:__ 569221
 
 __Solution:__
 
-Using the 'Rent a Boat' page from question 5, you could use the command `sqlmap.py -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" -D geordie_boat_rentals_ltd -T payments --dump` to see what the table contained.
+Using the 'Rent a Boat' page from [question 5](#question-5), you could use the command `sqlmap.py -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" -D geordie_boat_rentals_ltd -T payments --dump` to see what the table contained.
 
 This would have returned 126 rows from the table. Just using the dump command is not enough to find the sum of all the money in the `payments` table. To easily calculate the sum, you could run the command `sqlmap.py -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" --sql-shell`. This would open a SQL shell, which you could run SQL commands.
 
@@ -184,9 +184,9 @@ __Answer:__ "The admins rule the seas!"
 
 __Solution:__
 
-If you logged in to member's area using the solution used in question 3, you would only have the role `member`. If you visited the admin area, while being a member, you would have seen an unauthorised error which said that the role `admin` was required.
+If you logged in to member's area using the solution used in [question 3](#question-3), you would only have the role `member`. If you visited the admin area, while being a member, you would have seen an unauthorised error which said that the role `admin` was required.
 
-To get the role `admin` you would have to log in again. The table `users`, in question 3, only contained users with the `member` role. This means that you couldn't use SQLMap to find a user with the required role, and you would have to find another way to get the role `admin`.
+To get the role `admin` you would have to log in again. The table `users`, in [question 3](#question-3), only contained users with the `member` role. This means that you couldn't use SQLMap to find a user with the required role, and you would have to find another way to get the role `admin`.
 
 If you were to submit `'` as the username in the login form, this would have caused an error in the SQL syntax and produced an error on the server. You would be redirected to an error page, which gave a hint to the SQL command being used to check the login credentials. The command being used is:
 ```mysql
