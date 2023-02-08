@@ -130,7 +130,7 @@ __Solution:__
 
 There are two possible solutions for this question.
 
-One solution is to use the username and password that you obtained for Alex (or any other user) and submitted that to the login form.
+One solution is to use the username and password that you obtained for Alex (or any other user) and submit that to the login form.
 
 Another solution is to input `' or 1=1;--` into the login form and submit that. This would select the first record in the users tables, which is Steve.
 
