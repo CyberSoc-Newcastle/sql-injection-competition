@@ -75,7 +75,7 @@ __Question:__ How many users are there in the database?
 __Answer:__ 6
 
 __Solution:__ 
-Staying on the events that was used to find the answer in [question 1](#question-1), we could use the output from the command that showed the tables in the `boat_club` database. The table that we are interested is `users`. You could run the command `https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T users --dump`. This tables contains password and if you follow the prompts by SQLMap for a dictionary based attack, you could also see the raw passwords that would be helpful for [question 3](#question-3). The output would be:
+Staying on the events that was used to find the answer in [question 1](#question-1), we could use the output from the command that showed the tables in the `boat_club` database. The table that we are interested is `users`. You could run the command `sqlmap -u "https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T users --dump`. This tables contains password and if you follow the prompts by SQLMap for a dictionary based attack, you could also see the raw passwords that would be helpful for [question 3](#question-3). The output would be:
 ```
 Database: boat_club
 Table: users
@@ -97,7 +97,7 @@ If you look at the output from the dump command, you could see that there were _
 ## Question 3
 __Question:__ What is Alex's password?
 
-If you ran the command `https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T users --dump` from [question 2](#question-2), and used SQLMap to perform a dictionary based attack, you could see the raw passwords. This command produced the output:
+If you ran the command `sqlmap -u "https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T users --dump` from [question 2](#question-2), and used SQLMap to perform a dictionary based attack, you could see the raw passwords. This command produced the output:
 ```
 Database: boat_club
 Table: users
