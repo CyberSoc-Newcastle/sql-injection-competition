@@ -42,7 +42,7 @@ Database: boat_club
 +--------+
 ```
 
-From the tables output, the table `events` is where all the events are being stored. To find the answer to the question, you could run `https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T events --dump`. This specifies the database and table that were are interested in, and will output the contents of the table from the dump command. This would return (only the id, title and public columns are shown here due to space):
+From the tables output, the table `events` is where all the events are being stored. To find the answer to the question, you could run `sqlmap -u "https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T events --dump`. This specifies the database and table that were are interested in, and will output the contents of the table from the dump command. This would return (only the id, title and public columns are shown here due to space):
 ```
 Database: boat_club
 Table: events
